@@ -155,8 +155,8 @@ cursor: pointer;
 
 
 
-              <button v-if="isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
-   <button v-else type="button" @click.prevent="like" class="btn btn-warning">Liked</button>
+              <button v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
+              <button v-else type="button"  @click="deleteContact3(likeｓ.id)"><img class="icon" src="/img/heart.png">削除</button>
 
 
 

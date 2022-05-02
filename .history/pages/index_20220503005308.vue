@@ -151,7 +151,6 @@ cursor: pointer;
               <button class="btn3" @click="deleteContact3(like.id)"><img class="icon" src="/img/heart.png"></button>
 
               数字
-              {{$item->likes->count()}}
 
 
 
@@ -204,7 +203,6 @@ export default {
 
 
     async like() {
-      const array = ["/items/",id,"/likes"];
       const sendData = {
         user_id: this.user_id,
         post_id: this.post_id,

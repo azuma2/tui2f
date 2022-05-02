@@ -204,7 +204,6 @@ export default {
 
 
     async like() {
-      const array = ["/items/",id,"/likes"];
       const sendData = {
         user_id: this.user_id,
         post_id: this.post_id,

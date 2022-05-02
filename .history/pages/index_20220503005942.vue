@@ -150,13 +150,13 @@ cursor: pointer;
             
               <button class="btn3" @click="deleteContact3(like.id)"><img class="icon" src="/img/heart.png"></button>
 
-              数字
+              数字{{$item->likes->count()}}
 
 
 
 
-              <button v-if="isLiked(post.like)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
-   <button v-else type="button" @click.prevent="like" class="btn btn-warning">Liked</button>
+              <button v-if="!isLiked(post.likes)" type="button" @click.prevent="likes(post.id)" class="btn btn-outline-warning">Like</button>
+              <button v-else type="button"  @click="deleteContact3(likes.id)"><img class="icon" src="/img/heart.png">削除</button>
 
 
 
@@ -269,6 +269,7 @@ isLiked(likes) {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        this.user_id = user.uid;
         this.message = 'ログイン済みです'
       }
     })

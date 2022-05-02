@@ -151,7 +151,7 @@ cursor: pointer;
               <button class="btn3" @click="deleteContact3(like.id)"><img class="icon" src="/img/heart.png"></button>
 
               数字
-              {{$item->likes->count()}}
+              {{post->count()}}
 
 
 
