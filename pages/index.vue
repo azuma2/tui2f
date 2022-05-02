@@ -149,12 +149,13 @@ cursor: pointer;
             {{ post.user.name }}
             
               <button class="btn3" @click="deleteContact3(like.id)"><img class="icon" src="/img/heart.png"></button>
+
               数字
 
 
 
 
-              <button v-if="status == false" type="button" @click.prevent="like" class="btn btn-outline-warning">Like</button>
+              <button v-if="isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
    <button v-else type="button" @click.prevent="like" class="btn btn-warning">Liked</button>
 
 
@@ -187,7 +188,6 @@ export default {
       user_id: "",
       content: "",
       user: "",
-      like:"",
       status: false,
       contactLists: [],
       message: 'ログインができておりません',
@@ -199,6 +199,34 @@ export default {
 
 
   methods: {
+
+
+
+    async like() {
+      const sendData = {
+        user_id: this.user_id,
+        post_id: this.post_id,
+      };
+
+     axios.post("http://127.0.0.1:8000/api/like/store", sendData)
+     .then(res => {
+       if(res.data == 1) {
+         this.status = true
+       } else {
+         this.status = false
+       }
+     }).catch(function(err) {
+       console.log(err)
+     })
+    },
+
+isLiked(likes) {
+   const userIds = likes.map((like) => like.user_id)
+   return userIds.includes(this.user_id)
+},
+
+
+
 
 
 
