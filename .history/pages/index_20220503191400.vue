@@ -154,8 +154,8 @@ cursor: pointer;
 
 
 
-              <button  v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn3"><img class="icon" src="/img/heart.png"></button>
-              <button class="btn3" v-else type="button"  @click="deleteContact3(post.likes)"><img class="icon" src="/img/heart.png"></button>
+              <button  v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn3"><img class="icon" src="/img/heart.png">Like</button>
+              <button class="btn3" v-else type="button"  @click="deleteContact3(post.likes)"><img class="icon" src="/img/heart.png">削除</button>
 
               {{post.likes.length}}
 
@@ -219,7 +219,6 @@ export default {
      }).catch(function(err) {
        console.log(err)
      })
-     location.reload();
     },
 
 isLiked(likes) {
@@ -239,7 +238,6 @@ isLiked(likes) {
        const findData = likes.find((like) => like.user_id === this.user_id)
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
-      location.reload();
     },
 
      async deleteContact(id) {

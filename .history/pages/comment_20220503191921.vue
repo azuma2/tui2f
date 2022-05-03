@@ -250,7 +250,6 @@ isLiked(likes) {
 async created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.user_id = user.uid;
         this.message = "ログイン済みです";
       }
     });

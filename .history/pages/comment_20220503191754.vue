@@ -68,12 +68,7 @@ h2{
             {{ this.$route.query.postId }}
             
             
-              
-
-              <button  v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn3"><img class="icon" src="/img/heart.png"></button>
-              <button class="btn3" v-else type="button"  @click="deleteContact3(post.likes)"><img class="icon" src="/img/heart.png"></button>
-
-              {{post.likes.length}}
+              <button class="btn3" @click="deleteContact(post.id)"><img class="icon" src="/img/heart.png"></button>
               <button class="btn4" @click="deleteContact(post.id)"><img class="icon" src="/img/cross.png"></button>
           
             
@@ -165,12 +160,17 @@ isLiked(likes) {
 
 
 
+
+
+
+
+
+
      async deleteContact3(likes) {
        const findData = likes.find((like) => like.user_id === this.user_id)
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
       location.reload();
-      },
 
 
 
@@ -250,7 +250,6 @@ isLiked(likes) {
 async created() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        this.user_id = user.uid;
         this.message = "ログイン済みです";
       }
     });
