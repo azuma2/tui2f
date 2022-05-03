@@ -146,7 +146,7 @@ cursor: pointer;
         <tr >
           <td class=post>
             <div class=post2  v-for="post in contactLists" :key="post">
-            
+            {{ post.user.name }}
             
               <button class="btn3" @click="deleteContact3(likes)"><img class="icon" src="/img/heart.png"></button>
 
@@ -156,8 +156,8 @@ cursor: pointer;
 
 
 
-              <button v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
-              <button v-else type="button"  @click="deleteContact3(likes.id)"><img class="icon" src="/img/heart.png">削除</button>
+              <button  v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn3">Like</button>
+              <button  v-else type="button"  @click="deleteContact3(likes)"><img class="icon" src="/img/heart.png">削除</button>
 
 
 
@@ -234,8 +234,7 @@ isLiked(likes) {
 
 
 
-
-     async deleteContact3(id) {
+     async deleteContact3(likes) {
        const findData = likes.find((like) => like.user_id === this.user_id)
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();

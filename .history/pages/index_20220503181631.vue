@@ -148,16 +148,16 @@ cursor: pointer;
             <div class=post2  v-for="post in contactLists" :key="post">
             {{ post.user.name }}
             
+              <button class="btn3" @click="deleteContact3(likes)"><img class="icon" src="/img/heart.png"></button>
 
-              
-
-
-
-
-              <button  v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn3">Like</button>
-              <button class="btn3" v-else type="button"  @click="deleteContact3(likes)"><img class="icon" src="/img/heart.png">削除</button>
-
+              数字
               {{post.likes.length}}
+
+
+
+
+              <button v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
+              <button v-else type="button"  @click="deleteContact3(likes)"><img class="icon" src="/img/heart.png">削除</button>
 
 
 
