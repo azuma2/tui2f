@@ -46,23 +46,20 @@
   margin: 0 0 0 180px;
 }
 
-
 .syde{
   display: flex;
-
 }
 
 .area{
   border: 1px solid #ddd;
-    border-radius: 6px;
-    height: 10em;
-    width: 300px;
-    background: #eaedf2;
-    font-size: 18px;
+  border-radius: 6px;
+  height: 10em;
+  width: 300px;
+  background: #eaedf2;
+  font-size: 18px;
 }
 
 .btn2 {
-    
     border: 2px solid #dc70fa;
     font-size: 12px;
     color: #fff;
@@ -76,69 +73,54 @@
 }
 
 .btnichi{
-margin-left: 190px;
-padding: 10px;
+  margin-left: 190px;
+  padding: 10px;
 }
 
 P{
-    padding: 1px;
+  padding: 1px;
   margin: 10px;
   font-weight: bolder;
-   color: #fff;
-       list-style: none;
+  color: #fff;
+  list-style: none;
 }
 
 .icon{
-        height: 25px;
-      width: 25px;
+  height: 25px;
+  width: 25px;
 }
-
-
 
 </style>
 
-
-
 <template>
 <div class="row">
-<div class="col-3">
-  <div class="sidebar">
-    <div class="sidebar-wrapper">
-      <div class="sidebar-link-area">
-        <div class="logo2"><img class="logo" src="/img/logo.png"></div>
+  <div class="col-3">
+    <div class="sidebar">
+      <div class="sidebar-wrapper">
+        <div class="sidebar-link-area">
+          <div class="logo2"><img class="logo" src="/img/logo.png"></div>
         <!-- サイドバーメニュー -->
-        <div class="syde">
-          
+          <div class="syde">
           <div class="icon"><img class="icon" src="/img/home.png"></div><NuxtLink to="/"><p class="moji">ホーム</p></NuxtLink>
         </div>
-        <div class="syde">
+          <div class="syde">
           <div class="icon"><img class="icon" src="/img/logout.png"></div><NuxtLink to="/logout"><p class="moji">ログアウト</p></NuxtLink>
         </div>
-        <p class="moji">シェア</p>
-        <p>{{ content }}</p>
-
-
-
+          <p class="moji">シェア</p>
+          <p>{{ content }}</p>
           <textarea v-model="content" @input="emitFunc" class="area" />
           <div class="btnichi">
             <input class="btn2" type="submit" @click="insertContact"   value="シェアする" />
           </div>
-        
-
+        </div>
       </div>
     </div>
-  </div>
   </div>
 </div>
 </template>
 
-
-
-
 <script>
 import firebase from '~/plugins/firebase'
-
-
 export default {
   data() {
     return {
@@ -147,12 +129,11 @@ export default {
       contactLists: [],
     };
   },
-  methods: {
 
-        emitFunc() {
+  methods: {
+      emitFunc() {
       this.$emit('updateContent', this.content)
     },
-
     async getContact() {
       const response = await this.$axios.get(
       "http://127.0.0.1:8000/api/posts"
@@ -163,55 +144,34 @@ export default {
     
     async insertContact() {
       　console.log(this.user_id)
-    console.log(this.content)
+        console.log(this.content)
       const sendData = {
         user_id: this.user_id,
         content: this.content,
         created_at: this.created_at,
         updated_at: this.updated_at,
       };
-
       console.log(sendData)
-
       await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData).then( res => {
-          location.reload();
-          })
+      })
       this.content = "";
       this.getContact();
-      
       console.log(sendData);
-      location.reload();
-
-
+      
     },
   },
-  
+
   created() {
-    
-    
-
-
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         console.log(user.uid); // ユーザのID確認
         this.user_id = user.uid;
-        
         }else{
           console.log("認証に失敗しました");
       }
     });
     this.getContact();
-
-
-    
-    
   },
 
-
-
-
-
 };
-
-
 </script>

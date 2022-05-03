@@ -14,44 +14,37 @@
 <style>
 
 a {
- 
 color: inherit;
 text-decoration: none;
- 
 }
 
-
 header{
-
   margin-left:50px;
   margin-top:20px;
 }
+
 .head {
   display: flex;
   justify-content: space-between;
 }
 
-    .logo{
-      height: 30px;
-      width: 100px;
-        padding: 10px;
-    }
-
 .logo{
-
+  height: 30px;
+  width: 100px;
+  padding: 10px;
 }
 
 li {
   padding: 10px;
   margin: 10px;
   font-weight: bolder;
-   color: #fff;
-       list-style: none;
+  color: #fff;
+  list-style: none;
 }
 
 ul{
-   display: flex;
-    list-style: none;
+  display: flex;
+  list-style: none;
 }
 
 </style>

@@ -133,7 +133,7 @@ isLiked(likes) {
       const findData = likes.find((like) => like.user_id === this.user_id)
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
-      location.reload();
+      likes.splice(0, 1)
     },
 
     async deleteContact(id) {
@@ -166,26 +166,12 @@ isLiked(likes) {
         updated_at: this.updated_at,
       };
           console.log(sendData)
-          
-            await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
-            })
-          
-          if (this.content == '') return;
-          this.contactLists.push(
-          { content: this.content }
-          );
+      await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
+          location.reload();
+          })
         this.content = "";
         this.getContact();
-
-
           console.log(sendData);
-
-
-
-
-
-
-
     },
 
     emitFunc2() {

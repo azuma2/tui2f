@@ -166,26 +166,12 @@ isLiked(likes) {
         updated_at: this.updated_at,
       };
           console.log(sendData)
-          
-            await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
-            })
-          
-          if (this.content == '') return;
-          this.contactLists.push(
-          { content: this.content }
-          );
+      await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
+          })
         this.content = "";
         this.getContact();
-
-
           console.log(sendData);
-
-
-
-
-
-
-
+          
     },
 
     emitFunc2() {

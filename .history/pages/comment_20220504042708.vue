@@ -96,6 +96,7 @@ import firebase from '~/plugins/firebase'
 export default {
   data() {
     return {
+      newTask: '',
       user_id: "",
       content: "",
       user: "",
@@ -170,21 +171,17 @@ isLiked(likes) {
             await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
             })
           
-          if (this.content == '') return;
-          this.contactLists.push(
-          { content: this.content }
-          );
         this.content = "";
         this.getContact();
 
-
+        if (this.newTask == '') return;
           console.log(sendData);
 
 
 
-
-
-
+          this.contactLists.push(
+          { task: this.newTask }
+          );
 
     },
 

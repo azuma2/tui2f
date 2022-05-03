@@ -1,76 +1,75 @@
 <style>
-    body {
-      font-size:16px;
-      margin: 5px;
+body {
+  font-size:16px;
+  margin: 5px;
   background-color: rgb(41, 45, 88);
-    }
-    
+}
 
 .narabe{
   text-align: center;
+  flex-flow: column;
 }
-    
-        td {
-      
+
+td {
       text-align: center;
-    }
-
-    .narabe{
-        flex-flow: column;
-    }
-
-    .btn {
-    
-    border: 2px solid #dc70fa;
-    font-size: 12px;
-    color: #fff;
-    background-color: #dc70fa;
-    font-weight: bold;
-    padding: 8px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.4s;
-    outline: none;
 }
+
+.btn {
+  border: 2px solid #dc70fa;
+  font-size: 12px;
+  color: #fff;
+  background-color: #dc70fa;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+  outline: none;
+}
+
 .input-add {
   margin: 10px;
-    width: 80%;
-    padding: 15px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    appearance: none;
-    font-size: 14px;
-    outline: none;
+  width: 80%;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  appearance: none;
+  font-size: 14px;
+  outline: none;
 }
+
 .input-update {
-    width: 90%;
-    padding: 5px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    appearance: none;
-    font-size: 14px;
-    outline: none;
+  width: 90%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  appearance: none;
+  font-size: 14px;
+  outline: none;
 }
-    .card {
-    background-color: #fff;
-    width: 30vw;
-    padding: 30px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 10px;
+
+.card {
+  background-color: #fff;
+  width: 30vw;
+  padding: 30px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
 }
-    h1 {
-      font-size:32px;
-      color:white;
-      text-shadow:1px 0 5px #289ADC;
-      margin-left: 1px
-    }
-    .content {
-      margin:10px; 
-    }
-    </style>
+
+h1 {
+  font-size:32px;
+  color:white;
+  text-shadow:1px 0 5px #289ADC;
+  margin-left: 1px
+}
+
+.content {
+  margin:10px; 
+}
+</style>
 
 
 <template>

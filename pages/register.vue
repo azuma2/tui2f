@@ -4,11 +4,8 @@
     <div class="card">
       <div class="nakami">
         <div class="narabe"><h2>新規登録</h2></div>
-        
-
         <label><input class="input-add" v-model="name" type="name" required placeholder="名前"/></label>
         <br />
-
         <label><input class="input-add" v-model="email" type="email" required placeholder="メールアドレス"/></label>
         <br />
         <label><input class="input-add" v-model="password" type="password" required placeholder="パスワード"/></label>
