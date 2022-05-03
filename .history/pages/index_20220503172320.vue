@@ -146,17 +146,18 @@ cursor: pointer;
         <tr >
           <td class=post>
             <div class=post2  v-for="post in contactLists" :key="post">
-            {{ post.user.name }}
+            {{ post }}
             
-              <button class="btn3" @click="deleteContact3(like.id)"><img class="icon" src="/img/heart.png"></button>
+              <button class="btn3" @click="deleteContact3(likes)"><img class="icon" src="/img/heart.png"></button>
 
               数字
+              {{post.likes.length}}
 
 
 
 
               <button v-if="!isLiked(post.likes)" type="button" @click.prevent="like(post.id)" class="btn btn-outline-warning">Like</button>
-              <button v-else type="button"  @click="deleteContact3(like.id)"><img class="icon" src="/img/heart.png"></button>
+              <button v-else type="button"  @click="deleteContact3(likes.id)"><img class="icon" src="/img/heart.png">削除</button>
 
 
 
@@ -202,13 +203,13 @@ export default {
 
 
 
-    async like() {
+    async like(post_id) {
       const sendData = {
         user_id: this.user_id,
-        post_id: this.post_id,
+        post_id: post_id,
       };
 
-     axios.post("http://127.0.0.1:8000/api/like/store", sendData)
+     await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
      .then(res => {
        if(res.data == 1) {
          this.status = true
@@ -235,7 +236,8 @@ isLiked(likes) {
 
 
      async deleteContact3(id) {
-      await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy" + id);
+       const findData = likes.find((like) => like.user_id === this.user_id)
+      await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
     },
 
@@ -269,6 +271,7 @@ isLiked(likes) {
 
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
+        this.user_id = user.uid;
         this.message = 'ログイン済みです'
       }
     })
