@@ -166,12 +166,11 @@ import firebase from '~/plugins/firebase'
         user_id: this.user_id,
         post_id: post_id,
       };
-    await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
+    const response = await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
     .catch(function(err) {
       console.log(err)
     })
-    console.log(response)
-    
+        this.post.likes.push(response.data.data);
     },
 
 isLiked(likes) {
@@ -184,7 +183,7 @@ isLiked(likes) {
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
       const index = this.post.likes.findIndex((like) => like.user_id === this.user_id)
-      likes.splice(index,1)
+      this.post.likes.splice(index,1)
     },
 
     async deleteContact(id) {

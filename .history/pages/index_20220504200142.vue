@@ -170,8 +170,7 @@ import firebase from '~/plugins/firebase'
     .catch(function(err) {
       console.log(err)
     })
-    console.log(response)
-    
+        location.reload();
     },
 
 isLiked(likes) {

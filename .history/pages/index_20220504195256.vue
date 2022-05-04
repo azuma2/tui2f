@@ -170,8 +170,7 @@ import firebase from '~/plugins/firebase'
     .catch(function(err) {
       console.log(err)
     })
-    console.log(response)
-    
+        location.reload();
     },
 
 isLiked(likes) {
@@ -184,7 +183,7 @@ isLiked(likes) {
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
       const index = this.post.likes.findIndex((like) => like.user_id === this.user_id)
-      likes.splice(index,1)
+      this.post.likes.splice(index,1)
     },
 
     async deleteContact(id) {

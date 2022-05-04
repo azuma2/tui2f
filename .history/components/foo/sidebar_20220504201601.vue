@@ -152,14 +152,12 @@ export default {
         updated_at: this.updated_at,
       };
       console.log(sendData)
-      await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData).then( res => {
+      const response = await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData).then( res => {
       })
       this.content = "";
       this.getContact();
       console.log(sendData);
-      post.push(
-          { content: this.content }
-          );
+      this.post.likes.push(response.data.data);
     },
   },
 

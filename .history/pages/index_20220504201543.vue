@@ -166,12 +166,12 @@ import firebase from '~/plugins/firebase'
         user_id: this.user_id,
         post_id: post_id,
       };
-    await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
+    const response = const response = await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
     .catch(function(err) {
       console.log(err)
     })
     console.log(response)
-    
+        this.post.likes.push(response.data.data);
     },
 
 isLiked(likes) {

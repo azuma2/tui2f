@@ -56,7 +56,7 @@ h2{
           </tr>
           <tr >
             <td class=post>
-              <div  v-for="post in contactLists" :key="post"></div>
+              
               <div v-if="post" class="post2">
                 {{ post.user.name }}
                 {{ this.$route.query.postId }}
@@ -107,29 +107,17 @@ export default {
     }
   },
 
-
-
-
   methods: {
     async like(post_id) {
       const sendData = {
         user_id: this.user_id,
         post_id: post_id,
       };
-    await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
-    .then(res => {
-      if(res.data == 1) {
-        this.status = true
-      } else {
-        this.status = false
-      }
-    }).catch(function(err) {
+    const response = await this.$axios.post("http://127.0.0.1:8000/api/like/store", sendData)
+    .catch(function(err) {
       console.log(err)
     })
-        this.post.likes.push(
-          { likes: this.likes }
-          );
-
+        this.post.likes.push(response.data.data);
     },
 
 isLiked(likes) {
@@ -148,7 +136,7 @@ isLiked(likes) {
     async deleteContact(id) {
       await this.$axios.delete("http://127.0.0.1:8000/api/post/destroy/" + id);
       this.getContact();
-      
+      window.location.href = '/'
     },
 
     async getContact() {

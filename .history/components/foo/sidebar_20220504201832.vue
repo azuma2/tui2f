@@ -157,9 +157,7 @@ export default {
       this.content = "";
       this.getContact();
       console.log(sendData);
-      post.push(
-          { content: this.content }
-          );
+      this.post.likes.push(response.data.data);
     },
   },
 

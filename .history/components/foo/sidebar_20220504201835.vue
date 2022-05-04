@@ -157,7 +157,7 @@ export default {
       this.content = "";
       this.getContact();
       console.log(sendData);
-      post.push(
+      this.post.comments.push(
           { content: this.content }
           );
     },
