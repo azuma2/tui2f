@@ -157,7 +157,7 @@ export default {
       this.content = "";
       this.getContact();
       console.log(sendData);
-      location.reload();
+      
     },
   },
 

@@ -56,7 +56,6 @@ h2{
           </tr>
           <tr >
             <td class=post>
-              <div  v-for="post in contactLists" :key="post"></div>
               <div v-if="post" class="post2">
                 {{ post.user.name }}
                 {{ this.$route.query.postId }}
@@ -101,14 +100,10 @@ export default {
       content: "",
       user: "",
       post: null,
-      status: false,
       contactLists: [],
       message: 'ログインができておりません',
     }
   },
-
-
-
 
   methods: {
     async like(post_id) {
@@ -126,10 +121,9 @@ export default {
     }).catch(function(err) {
       console.log(err)
     })
-        this.post.likes.push(
-          { likes: this.likes }
+    this.post.likes.push(
+          { content: this.content }
           );
-
     },
 
 isLiked(likes) {
@@ -141,14 +135,11 @@ isLiked(likes) {
       const findData = likes.find((like) => like.user_id === this.user_id)
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
-      const index = this.post.likes.findIndex((like) => like.user_id === this.user_id)
-      this.post.likes.splice(index,1)
     },
 
     async deleteContact(id) {
       await this.$axios.delete("http://127.0.0.1:8000/api/post/destroy/" + id);
       this.getContact();
-      
     },
 
     async getContact() {

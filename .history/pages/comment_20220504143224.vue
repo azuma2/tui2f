@@ -126,10 +126,9 @@ export default {
     }).catch(function(err) {
       console.log(err)
     })
-        this.post.likes.push(
+    this.post.likes.push(
           { likes: this.likes }
           );
-
     },
 
 isLiked(likes) {
@@ -141,8 +140,7 @@ isLiked(likes) {
       const findData = likes.find((like) => like.user_id === this.user_id)
       await this.$axios.delete("http://127.0.0.1:8000/api/like/destroy/" + findData.id);
       this.getContact();
-      const index = this.post.likes.findIndex((like) => like.user_id === this.user_id)
-      this.post.likes.splice(index,1)
+      likes.splice(this.likes,1)
     },
 
     async deleteContact(id) {

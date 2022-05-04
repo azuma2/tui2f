@@ -126,9 +126,7 @@ export default {
     }).catch(function(err) {
       console.log(err)
     })
-        this.post.likes.push(
-          { likes: this.likes }
-          );
+    location.reload();
 
     },
 

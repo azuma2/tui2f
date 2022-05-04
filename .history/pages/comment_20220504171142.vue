@@ -127,7 +127,7 @@ export default {
       console.log(err)
     })
         this.post.likes.push(
-          { likes: this.likes }
+          { user_id: this.user_id }
           );
 
     },
