@@ -170,7 +170,7 @@ import firebase from '~/plugins/firebase'
       console.log(err)
     })
     console.log(response)
-    this.post.likes.push(response.data.data);
+        this.post.likes.push(response.data.data);
   },
 
   isLiked(likes) {

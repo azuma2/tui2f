@@ -155,10 +155,6 @@ isLiked(likes) {
     },
 
     async insert2Contact() {
-      if(!this.content) {
-      alert('データが空です')
-      return;
-      }
         console.log(this.user_id)
         console.log(this.content)
       const sendData = {
@@ -169,13 +165,16 @@ isLiked(likes) {
       };
           console.log(sendData)
           
+
             await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
             })
-            
+            if(!sampleData) {
+alert(‘サンプルデータが空です’)
+return;
+}
           this.post.comments.push(
           { content: this.content }
           );
-          
         this.content = "";
         this.getContact();
           console.log(sendData);

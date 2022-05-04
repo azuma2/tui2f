@@ -161,7 +161,7 @@ export default {
       this.content = "";
       this.getContact();
       console.log(sendData);
-      this.contactLists.push(
+      this.post.push(
         { content: this.content }
       );
     },

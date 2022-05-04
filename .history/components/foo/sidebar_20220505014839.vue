@@ -107,7 +107,7 @@ P{
           <div class="icon"><img class="icon" src="/img/logout.png"></div><NuxtLink to="/logout"><p class="moji">ログアウト</p></NuxtLink>
         </div>
           <p class="moji">シェア</p>
-          
+          <p>{{ content }}</p>
           <textarea v-model="content" @input="emitFunc" class="area" />
           <div class="btnichi">
             <input class="btn2" type="submit" @click="insertContact"   value="シェアする" />
@@ -143,6 +143,8 @@ export default {
     },
     
     async insertContact() {
+      
+    async insert2Contact() {
       if(!this.content) {
       alert('データが空です')
       return;
@@ -161,9 +163,9 @@ export default {
       this.content = "";
       this.getContact();
       console.log(sendData);
-      this.contactLists.push(
-        { content: this.content }
-      );
+      post.push(
+          { content: this.content }
+          );
     },
   },
 

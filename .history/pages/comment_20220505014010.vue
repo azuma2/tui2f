@@ -155,10 +155,6 @@ isLiked(likes) {
     },
 
     async insert2Contact() {
-      if(!this.content) {
-      alert('データが空です')
-      return;
-      }
         console.log(this.user_id)
         console.log(this.content)
       const sendData = {
@@ -179,6 +175,10 @@ isLiked(likes) {
         this.content = "";
         this.getContact();
           console.log(sendData);
+          if(!this.content) {
+alert(サンプルデータが空です")
+return;
+}
     },
 
     emitFunc2() {

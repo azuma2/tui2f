@@ -159,6 +159,7 @@ import firebase from '~/plugins/firebase'
       }
     },
 
+
   methods: {
     async like(post_id) {
       const sendData = {
@@ -170,7 +171,7 @@ import firebase from '~/plugins/firebase'
       console.log(err)
     })
     console.log(response)
-    this.post.likes.push(response.data.data);
+    
   },
 
   isLiked(likes) {

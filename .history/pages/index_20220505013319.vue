@@ -159,6 +159,7 @@ import firebase from '~/plugins/firebase'
       }
     },
 
+
   methods: {
     async like(post_id) {
       const sendData = {
@@ -170,13 +171,13 @@ import firebase from '~/plugins/firebase'
       console.log(err)
     })
     console.log(response)
-    this.post.likes.push(response.data.data);
-  },
+    
+    },
 
-  isLiked(likes) {
-    const userIds = likes.map((like) => like.user_id)
-    return userIds.includes(this.user_id)
-  },
+isLiked(likes) {
+  const userIds = likes.map((like) => like.user_id)
+  return userIds.includes(this.user_id)
+},
 
     async deleteContact3(likes) {
       const findData = likes.find((like) => like.user_id === this.user_id)

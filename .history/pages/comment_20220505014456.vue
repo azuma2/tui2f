@@ -108,6 +108,15 @@ export default {
   },
 
   methods: {
+
+
+
+
+
+
+
+
+
     async like(post_id) {
       const sendData = {
         user_id: this.user_id,
@@ -155,10 +164,6 @@ isLiked(likes) {
     },
 
     async insert2Contact() {
-      if(!this.content) {
-      alert('データが空です')
-      return;
-      }
         console.log(this.user_id)
         console.log(this.content)
       const sendData = {
@@ -166,6 +171,8 @@ isLiked(likes) {
         content: this.content,
         created_at: this.created_at,
         updated_at: this.updated_at,
+
+        
       };
           console.log(sendData)
           

@@ -108,6 +108,15 @@ export default {
   },
 
   methods: {
+
+
+
+
+
+
+
+
+
     async like(post_id) {
       const sendData = {
         user_id: this.user_id,
