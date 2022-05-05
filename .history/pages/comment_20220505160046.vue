@@ -171,6 +171,7 @@ isLiked(likes) {
           
             await this.$axios.post("http://127.0.0.1:8000/api/comment/store", sendData).then( res => {
             })
+            
           this.post.comments.push(
           { content: this.content }
           );

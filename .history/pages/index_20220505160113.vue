@@ -197,15 +197,10 @@ import firebase from '~/plugins/firebase'
       "http://127.0.0.1:8000/api/posts"
       );
       this.contactLists = response.data.items;
+      
       console.log(response);
     },
     
-    addPost(post){
-      // 投稿追加処理
-      // this.contactListsに対してpushする処理を記述
-      console.log(post);
-      this.contactLists.push(post);
-    },
 
     updateContent(content) {
       this.content = content;

@@ -203,7 +203,6 @@ import firebase from '~/plugins/firebase'
     addPost(post){
       // 投稿追加処理
       // this.contactListsに対してpushする処理を記述
-      console.log(post);
       this.contactLists.push(post);
     },
 

@@ -152,7 +152,8 @@ export default {
         user_id: this.user_id,
         content: this.content,
       };
-      const response = await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData)
+      const response = await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData).then( res => {
+      })
       this.content = "";
       this.$emit("my-click", response.data.data);
     },

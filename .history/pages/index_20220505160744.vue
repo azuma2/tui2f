@@ -202,9 +202,18 @@ import firebase from '~/plugins/firebase'
     
     addPost(post){
       // 投稿追加処理
+            const sendData = {
+        user_id: this.user_id,
+        content: this.content,
+        created_at: this.created_at,
+        updated_at: this.updated_at,
+      };
+      const response =await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData).then( res => {
+      })
+      this.content = "";
       // this.contactListsに対してpushする処理を記述
-      console.log(post);
-      this.contactLists.push(post);
+      this.contactLists.push(
+      { content: this.content } );
     },
 
     updateContent(content) {

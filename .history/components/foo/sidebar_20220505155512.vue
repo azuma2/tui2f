@@ -147,14 +147,23 @@ export default {
       alert('データが空です')
       return;
       }
-
+ 
       const sendData = {
         user_id: this.user_id,
         content: this.content,
+        created_at: this.created_at,
+        updated_at: this.updated_at,
       };
-      const response = await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData)
+      console.log(sendData)
+      await this.$axios.post("http://127.0.0.1:8000/api/post/store", sendData).then( res => {
+      })
       this.content = "";
-      this.$emit("my-click", response.data.data);
+      this.getContact();
+      console.log(sendData);
+      this.$emit("my-click", this.content);
+      this.contactLists.push(
+        { content: this.content }
+      );
     },
   },
 
