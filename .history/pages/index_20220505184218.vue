@@ -116,7 +116,7 @@ cursor: pointer;
 <template>
 <div class="waku">
   <div class="tes">
-    <FooSidebar  @my-click='addPost' @updateContent="updateContent"></FooSidebar>
+    <FooSidebar  @updateContent="updateContent"></FooSidebar>
     <Register @updateName="updateName"></Register>
   </div>
     <div class="main2">
@@ -134,7 +134,7 @@ cursor: pointer;
               <button class="btn4" @click="deleteContact(post.id)"><img class="icon" src="/img/cross.png"></button>
               <NuxtLink :to="{ path: 'comment', query: { postId: post.id } }"><button class="btn5"><img class="icon" src="/img/feather.png"></button></NuxtLink>
               <br>
-              <p class=post3> {{ post.content }}</p>
+              <p class=post3> <Child @my-click='addPost'/>{{ post.content }}</p>
             </div>
           </td>
         </tr>
