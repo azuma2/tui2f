@@ -161,7 +161,7 @@ export default {
       this.content = "";
       this.getContact();
       console.log(sendData);
-      this.$emit("my-click", this.content);
+      this.$emit("my-click", this.child_num);
       this.contactLists.push(
         { content: this.content }
       );

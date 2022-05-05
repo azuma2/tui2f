@@ -134,7 +134,7 @@ cursor: pointer;
               <button class="btn4" @click="deleteContact(post.id)"><img class="icon" src="/img/cross.png"></button>
               <NuxtLink :to="{ path: 'comment', query: { postId: post.id } }"><button class="btn5"><img class="icon" src="/img/feather.png"></button></NuxtLink>
               <br>
-              <p class=post3> <Child @my-click='post.content = $event'/>{{ post.content }}</p>
+              <p class=post3>{{ post.content }}</p>
             </div>
           </td>
         </tr>
@@ -147,7 +147,6 @@ cursor: pointer;
 
 <script>
 import firebase from '~/plugins/firebase'
-
   export default {
     data() {
       return {
@@ -160,10 +159,6 @@ import firebase from '~/plugins/firebase'
       }
     },
 
-// import sidebar from '~/components/foo/sidebar.vue'
-
-
-
   methods: {
     async like(post_id) {
       const sendData = {
@@ -175,7 +170,9 @@ import firebase from '~/plugins/firebase'
       console.log(err)
     })
     const findPost = this.contactLists.find((post) => post.id === post_id)	
+    const index = likes.findIndex((like) => like.user_id === this.user_id)
     findPost.likes.push(response.data.data);
+    this.post.likes.push(index);
   },
 
   isLiked(likes) {
